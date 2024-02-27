@@ -12,7 +12,8 @@ export class NavBarComponent {
         this.items = [
           {
             label: 'Agendar Cita',
-            icon: 'pi pi-fw pi-calendar'
+            icon: 'pi pi-fw pi-calendar',
+            routerLink: '/'
           },
           {
             label: 'Usuarios',
@@ -20,7 +21,8 @@ export class NavBarComponent {
             items: [
               {
                 label: 'Nuevo Usuario Psicologo',
-                icon: 'pi pi-fw pi-user-plus'
+                icon: 'pi pi-fw pi-user-plus',
+                routerLink: '/psicologos'
               },
               {
                 label: 'Nuevo Usuario Paciente',

@@ -1,0 +1,21 @@
+<p-table [value]="psicologos" [tableStyle]="{ 'min-width': '50rem' }">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Código</th>
+            <th>Nombre Completo</th>
+            <th>CMP</th>
+            <th>CPP</th>
+            <th>Email</th>
+            <th>Acciones</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-psicologo>
+        <tr>
+            <td>{{ psicologo.codigo }}</td>
+            <td>{{ psicologo.nombres }} {{ psicologo.apellidos }}</td>
+            <td>{{ psicologo.cmp }}</td>
+            <td>{{ psicologo.cpp }}</td>
+            <td></td>
+        </tr>
+    </ng-template>
+</p-table>
