@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Distrito } from '../Models/Distrito.model';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,11 +13,11 @@ export class DistritosService {
   constructor(private http: HttpClient) { } // Inyectar HttpClient
 
   // Método para añadir un nuevo distrito
-  addDistrito(distrito: Distrito | any) {
-    return this.http.post(this.apiUrl, distrito);
+  addDistrito(distrito: Distrito | any): Observable<Distrito>{
+    return this.http.post<Distrito>(this.apiUrl, distrito);
   }
 
-  listDistrito(){
-    return this.http.get(this.apiUrl);
+  listDistrito(): Observable<Distrito[]>{
+    return this.http.get<Distrito[]>(this.apiUrl);
   }
 }

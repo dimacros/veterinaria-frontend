@@ -8,6 +8,8 @@ import { InputTextModule } from 'primeng/inputtext';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
+import { DropdownModule } from 'primeng/dropdown';
+
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import { ButtonModule } from 'primeng/button';
     InputTextModule,
     InputNumberModule,
     ReactiveFormsModule,
-    ButtonModule
+    ButtonModule,
+    DropdownModule
   ]
 })
 export class SharedModule { }

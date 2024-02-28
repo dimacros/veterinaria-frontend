@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { PacientesService } from '../../../../Services/pacientes.service';
+import { DistritosService } from '../../../../Services/distritos.service';
 
 @Component({
   selector: 'app-registrar-pacientes',
@@ -10,10 +11,20 @@ import { PacientesService } from '../../../../Services/pacientes.service';
 export class RegistrarPacientesComponent implements OnInit {
   
   pacienteForm!: FormGroup;
-
-  constructor(private pacientesService: PacientesService) { }
+  listDistritos: any[] = [];
+  
+  constructor(private pacientesService: PacientesService,private distritoService: DistritosService) { }
   
   ngOnInit(): void {
+
+    this.listDistritos = [];
+    this.distritoService.listDistrito().subscribe(
+      {
+        next: (distritos) => this.listDistritos = distritos.map(d => ({ label: d.nombre, value: d })),
+        error: (error) => this.listDistritos = []
+      }
+    );
+
     this.pacienteForm = new FormGroup({
       // Asume que el código es auto-generado o no es necesario en el formulario
       nombres: new FormControl('', Validators.required),
@@ -39,5 +50,15 @@ export class RegistrarPacientesComponent implements OnInit {
     } else {
       console.log('Formulario no válido');
     }
+  }
+
+  onDistritoChange(event: any) {
+    const distrito = event.value;
+    this.pacienteForm.patchValue({
+      distrito: {
+        codigo: distrito.codigo,
+        nombre: distrito.nombre
+      }
+    });
   }
 }

@@ -13,7 +13,8 @@ import { PacientesModule } from './pages/pacientes/pacientes.module';
     SharedModule,
     HttpClientModule,
     PsicologosModule,
-    PacientesModule],
+    PacientesModule
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

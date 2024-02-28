@@ -5,6 +5,7 @@ import { MainPacienteComponent } from './main-paciente/main-paciente.component';
 import { PacientesService } from '../../Services/pacientes.service';
 import { RegistrarPacientesComponent } from './components/registrar-pacientes/registrar-pacientes.component';
 import { HttpClientModule } from '@angular/common/http';
+import { DistritosService } from '../../Services/distritos.service';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { HttpClientModule } from '@angular/common/http';
     MainPacienteComponent
   ],
   providers : [
-    PacientesService
+    PacientesService,
+    DistritosService
   ]
 })
 export class PacientesModule { }
