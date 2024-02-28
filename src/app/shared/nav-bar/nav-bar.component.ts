@@ -26,7 +26,8 @@ export class NavBarComponent {
               },
               {
                 label: 'Nuevo Usuario Paciente',
-                icon: 'pi pi-fw pi-user-plus'
+                icon: 'pi pi-fw pi-user-plus',
+                routerLink: '/paciente'
               }
             ]
           },

@@ -7,8 +7,6 @@ import { RegistrarPsicologosComponent } from './components/registrar-psicologos/
 import { HttpClientModule } from '@angular/common/http';
 import { PsicologosService } from '../../Services/psicologos.service';
 
-
-
 @NgModule({
   declarations: [
     MainPsicologosComponent,

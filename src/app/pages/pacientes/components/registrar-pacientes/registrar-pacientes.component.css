@@ -1,0 +1,15 @@
+/* Estilos para el formulario */
+.form-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Espacio entre campos */
+}
+
+.form-field {
+  flex: 1 1 200px; /* Cada campo intentará ocupar al menos 200px, pero puede crecer si hay espacio */
+}
+
+/* Estilo para el botón de envío */
+.submit-button {
+  margin-top: 20px;
+}
