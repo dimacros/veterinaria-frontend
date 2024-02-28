@@ -16,4 +16,7 @@ export class PacientesService {
     return this.http.post(this.apiUrl, paciente);
   }
   
+  listPacientes(){
+    return this.http.get(this.apiUrl);
+  }
 }

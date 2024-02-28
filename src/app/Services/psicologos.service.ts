@@ -15,4 +15,8 @@ export class PsicologosService {
   addPsicologo(psicologo: Psicologo | any) {
     return this.http.post(this.apiUrl, psicologo);
   }
+
+  listPsicologos(){
+    return this.http.get(this.apiUrl);
+  }
 }
