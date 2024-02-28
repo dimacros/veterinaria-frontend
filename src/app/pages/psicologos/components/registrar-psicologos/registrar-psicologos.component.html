@@ -1,60 +1,64 @@
-<form [formGroup]="psicologoForm" (ngSubmit)="onSubmit()">
-    <div class="form-container">
-        <div class="card flex justify-content-center">
-            <input type="text" pInputText formControlName="nombres" placeholder="Nombres" />
-        </div>
-        <br>
-        <div class="card flex justify-content-center">
-            <input type="text" pInputText formControlName="apellidos" placeholder="Apellidos" />
-        </div>
-        <br>
-        <div class="card flex justify-content-center">
-            <input type="text" pInputText formControlName="dni" placeholder="DNI" />
-        </div>
-        <br>
-        <div class="card flex justify-content-center">
-            <p-dropdown [options]="listGenders" formControlName="genero" placeholder="Selecciona Género"></p-dropdown>
-        </div>
-        <br>
-        <div class="card flex justify-content-center">
-            <p-dropdown [options]="listDistritos" (onChange)="onDistritoChange($event)" optionLabel="label"
-                placeholder="Selecciona Distrito">
-            </p-dropdown>
-        </div>
-        <br>
-        <div class="card flex justify-content-center">
-            <input type="text" pInputText formControlName="cmp" placeholder="CMP" />
-        </div>
-        <br>
-        <div class="card flex justify-content-center">
-            <input type="text" pInputText formControlName="cpp" placeholder="CPP" />
-        </div>
-        <br>
-        <div class="card flex justify-content-center">
-            <input type="text" pInputText formControlName="estudios" placeholder="Estudios" />
-        </div>
-        <br>
-        <div class="card flex justify-content-center">
-            <p-dropdown [options]="listEspecialidad" (onChange)="onEspecialidadChange($event)" optionLabel="label"
-                placeholder="Selecciona Especialidad">
-            </p-dropdown>
-        </div>
-        <br>
-        <div class="card flex justify-content-center">
-            <input type="text" pInputText formControlName="email" placeholder="Email" />
-        </div>
-        <br>
-        <div class="card flex justify-content-center">
-            <input type="password" pInputText formControlName="clave" placeholder="Clave" />
-        </div>
-        <br>
-        <div class="card flex justify-content-center">
-            <p-inputNumber formControlName="experiencia" inputId="minmax" mode="decimal" [min]="0"
-                placeholder="Experiencia"></p-inputNumber>
-        </div>
-        <br>
-        <div class="card flex justify-content-center">
-            <p-button type="submit" label="Submit" label="Enviar" icon="pi pi-check" [disabled]="!psicologoForm.valid"></p-button>
-        </div>
-    </div>
-</form>
+<div class="card">
+    <p-card header="Registrar Psicologos">
+        <form [formGroup]="psicologoForm" (ngSubmit)="onSubmit()" class="p-fluid">
+            <div class="p-formgrid p-grid">
+                <div class="p-field p-col-6">
+                    <input type="text" pInputText formControlName="nombres" placeholder="Nombres" />
+                </div>
+                <br>
+                <div class="p-field p-col-6">
+                    <input type="text" pInputText formControlName="apellidos" placeholder="Apellidos" />
+                </div>
+                <br>
+                <div class="p-field p-col-12">
+                    <input type="text" pInputText formControlName="dni" placeholder="DNI" />
+                </div>
+                <br>
+                <div class="p-field p-col-6">
+                    <p-dropdown [options]="listGenders" formControlName="genero" placeholder="Selecciona Género"></p-dropdown>
+                </div>
+                <br>
+                <div class="p-field p-col-6">
+                    <p-dropdown [options]="listDistritos" (onChange)="onDistritoChange($event)" optionLabel="label"
+                        placeholder="Selecciona Distrito">
+                    </p-dropdown>
+                </div>
+                <br>
+                <div class="p-field p-col-6">
+                    <input type="text" pInputText formControlName="cmp" placeholder="CMP" />
+                </div>
+                <br>
+                <div class="p-field p-col-6">
+                    <input type="text" pInputText formControlName="cpp" placeholder="CPP" />
+                </div>
+                <br>
+                <div class="p-field p-col-6">
+                    <input type="text" pInputText formControlName="estudios" placeholder="Estudios" />
+                </div>
+                <br>
+                <div class="p-field p-col-6">
+                    <p-dropdown [options]="listEspecialidad" (onChange)="onEspecialidadChange($event)" optionLabel="label"
+                        placeholder="Selecciona Especialidad">
+                    </p-dropdown>
+                </div>
+                <br>
+                <div class="p-field p-col-12">
+                    <p-inputNumber formControlName="experiencia" inputId="minmax" mode="decimal" [min]="0"
+                        placeholder="Experiencia"></p-inputNumber>
+                </div>
+                <br>
+                <div class="p-field p-col-12">
+                    <input type="text" pInputText formControlName="email" placeholder="Email" />
+                </div>
+                <br>
+                <div class="p-field p-col-12">
+                    <input type="password" pInputText formControlName="clave" placeholder="Clave" />
+                </div>
+                <br>
+                <div class="p-field p-col-12">
+                    <p-button type="submit" label="Submit" label="Enviar" icon="pi pi-check" [disabled]="!psicologoForm.valid"></p-button>
+                </div>
+            </div>
+        </form>
+    </p-card>
+</div>

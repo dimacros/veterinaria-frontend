@@ -1,37 +1,43 @@
-<form [formGroup]="pacienteForm" (ngSubmit)="onSubmit()">
-    <div class="form-container">
-        <div class="card flex justify-content-center col-6">
-            <input type="text" pInputText formControlName="nombres" placeholder="Nombres" />
-        </div>
-        <br>
-        <div class="card flex justify-content-center">
-            <input type="text" pInputText formControlName="apellidos" placeholder="Apellidos" />
-        </div>
-        <br>
-        <div class="card flex justify-content-center">
-            <input type="text" pInputText formControlName="dni" placeholder="DNI" />
-        </div>
-        <br>
-        <div class="card flex justify-content-center">
-            <p-dropdown [options]="listDistritos" (onChange)="onDistritoChange($event)" optionLabel="label"
-                placeholder="Selecciona Distrito">
-            </p-dropdown>
-        </div>
-        <br>
-        <div class="card flex justify-content-center">
-            <p-dropdown [options]="listGenders" formControlName="genero" placeholder="Selecciona Género"></p-dropdown>
-        </div>
-        <br>
-        <div class="card flex justify-content-center">
-            <input type="text" pInputText formControlName="email" placeholder="Email" />
-        </div>
-        <br>
-        <div class="card flex justify-content-center">
-            <input type="password" pInputText formControlName="clave" placeholder="Clave" />
-        </div>
-        <br>
-        <div class="card flex justify-content-center">
-            <p-button type="submit" label="Enviar" icon="pi pi-check" [disabled]="!pacienteForm.valid"></p-button>
-        </div>
-    </div>
-</form>
+<div class="card">
+    <p-card header="Registrar Paciente">
+        <form [formGroup]="pacienteForm" (ngSubmit)="onSubmit()" class="p-fluid">
+            <div class="p-formgrid p-grid">
+                <div class="p-field p-col-6">
+                    <input type="text" pInputText formControlName="nombres" placeholder="Nombres" />
+                </div>
+                <br>
+                <div class="p-field p-col-6">
+                    <input type="text" pInputText formControlName="apellidos" placeholder="Apellidos" />
+                </div>
+                <br>
+                <div class="p-field p-col-12">
+                    <input type="text" pInputText formControlName="dni" placeholder="DNI" />
+                </div>
+                <br>
+                <div class="p-field p-col-6">
+                    <p-dropdown [options]="listDistritos" (onChange)="onDistritoChange($event)" optionLabel="label"
+                        placeholder="Selecciona Distrito">
+                    </p-dropdown>
+                </div>
+                <br>
+                <div class="p-field p-col-6">
+                    <p-dropdown [options]="listGenders" formControlName="genero"
+                        placeholder="Selecciona Género"></p-dropdown>
+                </div>
+                <br>
+                <div class="p-field p-col-12">
+                    <input type="text" pInputText formControlName="email" placeholder="Email" />
+                </div>
+                <br>
+                <div class="p-field p-col-12">
+                    <input type="password" pInputText formControlName="clave" placeholder="Clave" />
+                </div>
+                <br>
+                <div class="p-field p-col-12">
+                    <p-button type="submit" label="Enviar" icon="pi pi-check"
+                        [disabled]="!pacienteForm.valid"></p-button>
+                </div>
+            </div>
+        </form>
+    </p-card>
+</div>

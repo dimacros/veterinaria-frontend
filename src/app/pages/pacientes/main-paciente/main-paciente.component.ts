@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrl: './main-paciente.component.css'
 })
 export class MainPacienteComponent {
-  Title: string = 'Registro de Pacientes';
+  Title: string = 'Modulo Pacientes';
 }
