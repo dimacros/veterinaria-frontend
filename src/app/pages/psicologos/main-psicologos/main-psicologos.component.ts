@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrl: './main-psicologos.component.css'
 })
 export class MainPsicologosComponent {
-   Title: string = 'Listado de doctores';
+   Title: string = 'Registro de doctores';
 }
