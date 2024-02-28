@@ -13,7 +13,7 @@ export class NavBarComponent {
           {
             label: 'Agendar Cita',
             icon: 'pi pi-fw pi-calendar',
-            routerLink: '/'
+            routerLink: '/agendar-cita'
           },
           {
             label: 'Usuarios',
@@ -33,7 +33,8 @@ export class NavBarComponent {
           },
           {
             label: 'Atender Cita',
-            icon: 'pi pi-fw pi-check-square'
+            icon: 'pi pi-fw pi-check-square',
+            routerLink: '/atender-cita'
           }
         ];
       }

@@ -4,6 +4,7 @@ import { SharedModule } from './shared/shared.module';
 import { PsicologosModule } from './pages/psicologos/psicologo.module';
 import { HttpClientModule } from '@angular/common/http';
 import { PacientesModule } from './pages/pacientes/pacientes.module';
+import { CitasModule } from './pages/citas/citas.module';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,8 @@ import { PacientesModule } from './pages/pacientes/pacientes.module';
     SharedModule,
     HttpClientModule,
     PsicologosModule,
-    PacientesModule
+    PacientesModule,
+    CitasModule
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
