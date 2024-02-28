@@ -12,6 +12,10 @@ export class RegistrarPacientesComponent implements OnInit {
   
   pacienteForm!: FormGroup;
   listDistritos: any[] = [];
+  listGenders: any[] = [
+    { label: 'Masculino', value: 'Masculino' },
+    { label: 'Femenino', value: 'Femenino' }
+  ];
   
   constructor(private pacientesService: PacientesService,private distritoService: DistritosService) { }
   
@@ -53,7 +57,7 @@ export class RegistrarPacientesComponent implements OnInit {
   }
 
   onDistritoChange(event: any) {
-    const distrito = event.value;
+    const distrito = event.value.value;
     this.pacienteForm.patchValue({
       distrito: {
         codigo: distrito.codigo,

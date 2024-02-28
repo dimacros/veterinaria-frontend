@@ -13,7 +13,13 @@
         </div>
         <br>
         <div class="card flex justify-content-center">
-            <input type="text" pInputText formControlName="genero" placeholder="Género" />
+            <p-dropdown [options]="listGenders" formControlName="genero" placeholder="Selecciona Género"></p-dropdown>
+        </div>
+        <br>
+        <div class="card flex justify-content-center">
+            <p-dropdown [options]="listDistritos" (onChange)="onDistritoChange($event)" optionLabel="label"
+                placeholder="Selecciona Distrito">
+            </p-dropdown>
         </div>
         <br>
         <div class="card flex justify-content-center">
@@ -26,6 +32,12 @@
         <br>
         <div class="card flex justify-content-center">
             <input type="text" pInputText formControlName="estudios" placeholder="Estudios" />
+        </div>
+        <br>
+        <div class="card flex justify-content-center">
+            <p-dropdown [options]="listEspecialidad" (onChange)="onEspecialidadChange($event)" optionLabel="label"
+                placeholder="Selecciona Especialidad">
+            </p-dropdown>
         </div>
         <br>
         <div class="card flex justify-content-center">

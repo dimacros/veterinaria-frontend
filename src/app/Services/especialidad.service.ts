@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Especialidad } from '../Models/Especialidad.model';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,11 +13,11 @@ export class EspecialidadService {
   constructor(private http: HttpClient) { } // Inyectar HttpClient
 
   // Método para añadir un nuevo especialidad
-  addEspecialidad(especialidad: Especialidad | any) {
-    return this.http.post(this.apiUrl, especialidad);
+  addEspecialidad(especialidad: Especialidad | any): Observable<Especialidad> {
+    return this.http.post<Especialidad>(this.apiUrl, especialidad);
   }
 
-  listEspecialidad(){
-    return this.http.get(this.apiUrl);
+  listEspecialidad(): Observable<Especialidad[]>{
+    return this.http.get<Especialidad[]>(this.apiUrl);
   }
 }

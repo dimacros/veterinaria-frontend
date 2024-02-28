@@ -1,6 +1,6 @@
 <form [formGroup]="pacienteForm" (ngSubmit)="onSubmit()">
     <div class="form-container">
-        <div class="card flex justify-content-center">
+        <div class="card flex justify-content-center col-6">
             <input type="text" pInputText formControlName="nombres" placeholder="Nombres" />
         </div>
         <br>
@@ -14,12 +14,12 @@
         <br>
         <div class="card flex justify-content-center">
             <p-dropdown [options]="listDistritos" (onChange)="onDistritoChange($event)" optionLabel="label"
-                placeholder="Select a Distrito" [showClear]="true">
+                placeholder="Selecciona Distrito">
             </p-dropdown>
         </div>
         <br>
         <div class="card flex justify-content-center">
-            <input type="text" pInputText formControlName="genero" placeholder="Género" />
+            <p-dropdown [options]="listGenders" formControlName="genero" placeholder="Selecciona Género"></p-dropdown>
         </div>
         <br>
         <div class="card flex justify-content-center">

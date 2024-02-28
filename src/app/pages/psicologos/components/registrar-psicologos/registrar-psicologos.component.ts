@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { PsicologosService } from '../../../../Services/psicologos.service';
+import { DistritosService } from '../../../../Services/distritos.service';
+import { EspecialidadService } from '../../../../Services/especialidad.service';
 
 @Component({
   selector: 'app-registrar-psicologos',
@@ -10,10 +12,31 @@ import { PsicologosService } from '../../../../Services/psicologos.service';
 export class RegistrarPsicologosComponent implements OnInit {
   
   psicologoForm!: FormGroup;
+  listDistritos: any[] = [];
+  listEspecialidad: any[] = [];
+  listGenders: any[] = [
+    { label: 'Masculino', value: 'Masculino' },
+    { label: 'Femenino', value: 'Femenino' }
+  ];
 
-  constructor(private psicologosService: PsicologosService) { }
+  constructor(private psicologosService: PsicologosService,private distritoService: DistritosService,private especialidadService: EspecialidadService) { }
   
   ngOnInit(): void {
+
+    this.distritoService.listDistrito().subscribe(
+      {
+        next: (distritos) => this.listDistritos = distritos.map(d => ({ label: d.nombre, value: d })),
+        error: (error) => this.listDistritos = []
+      }
+    );
+
+    this.especialidadService.listEspecialidad().subscribe(
+      {
+        next: (especialidades) => this.listEspecialidad = especialidades.map(e => ({ label: e.nombre, value: e })),
+        error: (error) => this.listEspecialidad = []
+      }
+    );
+
     this.psicologoForm = new FormGroup({
       codigo: new FormControl(null), // assuming code is auto-generated or not needed in form
       nombres: new FormControl('', Validators.required),
@@ -21,15 +44,15 @@ export class RegistrarPsicologosComponent implements OnInit {
       dni: new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(8)]),
       genero: new FormControl('', Validators.required),
       distrito: new FormGroup({
-        codigo: new FormControl(1),
+        codigo: new FormControl(0, [Validators.min(1)]),
         nombre: new FormControl('')
       }),
       cmp: new FormControl('', Validators.required),
       cpp: new FormControl(''),
       experiencia: new FormControl(0, [Validators.min(0)]), 
       especialidad: new FormGroup({
-        codigo: new FormControl(1),
-        descripcion: new FormControl('')
+        codigo: new FormControl(0, [Validators.min(1)]),
+        nombre: new FormControl('')
       }),
       estudios: new FormControl(''),
       email: new FormControl('', [Validators.required, Validators.email]),
@@ -47,6 +70,26 @@ export class RegistrarPsicologosComponent implements OnInit {
     } else {
       console.log('Formulario no válido');
     }
+  }
+
+  onDistritoChange(event: any) {
+    const distrito = event.value.value;
+    this.psicologoForm.patchValue({
+      distrito: {
+        codigo: distrito.codigo,
+        nombre: distrito.nombre
+      }
+    });
+  }
+
+  onEspecialidadChange(event: any) {
+    const especialidad = event.value.value;
+    this.psicologoForm.patchValue({
+      especialidad: {
+        codigo: especialidad.codigo,
+        nombre: especialidad.nombre
+      }
+    });
   }
 }
 
