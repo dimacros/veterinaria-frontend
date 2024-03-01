@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { PsicologosService } from '../../../../Services/psicologos.service';
 import { DistritosService } from '../../../../Services/distritos.service';
 import { EspecialidadService } from '../../../../Services/especialidad.service';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-registrar-psicologos',
@@ -19,7 +20,11 @@ export class RegistrarPsicologosComponent implements OnInit {
     { label: 'Femenino', value: 'Femenino' }
   ];
 
-  constructor(private psicologosService: PsicologosService,private distritoService: DistritosService,private especialidadService: EspecialidadService) { }
+  constructor(
+    private readonly psicologosService: PsicologosService,
+    private readonly distritoService: DistritosService,
+    private readonly especialidadService: EspecialidadService,
+    private readonly messageService: MessageService) { }
   
   ngOnInit(): void {
 
@@ -37,34 +42,22 @@ export class RegistrarPsicologosComponent implements OnInit {
       }
     );
 
-    this.psicologoForm = new FormGroup({
-      codigo: new FormControl(null), // assuming code is auto-generated or not needed in form
-      nombres: new FormControl('', Validators.required),
-      apellidos: new FormControl('', Validators.required),
-      dni: new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(8)]),
-      genero: new FormControl('', Validators.required),
-      distrito: new FormGroup({
-        codigo: new FormControl(0, [Validators.min(1)]),
-        nombre: new FormControl('')
-      }),
-      cmp: new FormControl('', Validators.required),
-      cpp: new FormControl(''),
-      experiencia: new FormControl(0, [Validators.min(0)]), 
-      especialidad: new FormGroup({
-        codigo: new FormControl(0, [Validators.min(1)]),
-        nombre: new FormControl('')
-      }),
-      estudios: new FormControl(''),
-      email: new FormControl('', [Validators.required, Validators.email]),
-      clave: new FormControl('', [Validators.required, Validators.minLength(6)])
-    });
+    this.clearForm();
+    
   }
 
   onSubmit() {
     if (this.psicologoForm.valid) {
       const psicologo = this.psicologoForm.value;
       this.psicologosService.addPsicologo(psicologo).subscribe({
-        next: (response) => console.log('Psicólogo registrado con éxito', response),
+        next: (response) => {
+          this.messageService.add({
+            severity:'success', 
+            summary: 'psicólogo resgistrado', 
+            detail: 'psicólogo registrado exitósamente'
+          });
+          this.clearForm();
+        },
         error: (error) => console.error('Error al registrar el psicólogo', error)
       });
     } else {
@@ -89,6 +82,30 @@ export class RegistrarPsicologosComponent implements OnInit {
         codigo: especialidad.codigo,
         nombre: especialidad.nombre
       }
+    });
+  }
+
+  clearForm(){
+    this.psicologoForm = new FormGroup({
+      codigo: new FormControl(null), // assuming code is auto-generated or not needed in form
+      nombres: new FormControl('', Validators.required),
+      apellidos: new FormControl('', Validators.required),
+      dni: new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(8)]),
+      genero: new FormControl('', Validators.required),
+      distrito: new FormGroup({
+        codigo: new FormControl(0, [Validators.min(1)]),
+        nombre: new FormControl('')
+      }),
+      cmp: new FormControl('', Validators.required),
+      cpp: new FormControl(''),
+      experiencia: new FormControl(null, [Validators.min(0)]), 
+      especialidad: new FormGroup({
+        codigo: new FormControl(0, [Validators.min(1)]),
+        nombre: new FormControl('')
+      }),
+      estudios: new FormControl(''),
+      email: new FormControl('', [Validators.required, Validators.email]),
+      clave: new FormControl('', [Validators.required, Validators.minLength(6)])
     });
   }
 }
