@@ -9,7 +9,7 @@ import { PacientesService } from '../../Services/pacientes.service';
 import { PsicologosService } from '../../Services/psicologos.service';
 import { AgendarCitasComponent } from './agendar-citas/agendar-citas.component';
 import { AtenderCitasComponent } from './atender-citas/atender-citas.component';
-
+import { ConfirmationService, MessageService } from 'primeng/api';
 
 
 @NgModule({
@@ -27,6 +27,8 @@ import { AtenderCitasComponent } from './atender-citas/atender-citas.component';
     AtenderCitasComponent
   ],
   providers : [
+    ConfirmationService,
+    MessageService,
     PsicologosService,
     DistritosService,
     EspecialidadService,

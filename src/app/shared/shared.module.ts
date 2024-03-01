@@ -69,6 +69,8 @@ import { ToastModule } from 'primeng/toast';
     StepsModule,
     MessagesModule,
     ToastModule,
+    DialogModule,
+    InputTextareaModule
   ]
 })
 export class SharedModule { }

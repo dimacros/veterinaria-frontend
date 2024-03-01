@@ -7,6 +7,7 @@
                 <tr>
                     <th>ID</th>
                     <th>Nombre del Paciente</th>
+                    <th>Nombre del Doctor</th>
                     <th>Tópico</th>
                     <th>Día y Hora</th>
                     <th>Estado</th>
@@ -15,9 +16,14 @@
             </ng-template>
             <ng-template pTemplate="body" let-cita>
                 <tr>
-                    <td>{{ cita.codigo }}</td>
+                    <td>
+                        {{ cita.codigo }}
+                    </td>
                     <td>
                         {{ cita.paciente.nombres }} {{ cita.paciente.apellidos }}
+                    </td>
+                    <td>
+                        {{ cita.psicologo.nombres }} {{ cita.psicologo.apellidos }}
                     </td>
                     <td>
                         {{ cita.psicologo.especialidad.nombre }}
@@ -26,13 +32,13 @@
                     <td>{{ cita.estado }}</td>
                     <td class="inline-flex gap-3">
                         <p-button 
-                            [disabled]="cita.estado === 'CANCELADO'"
+                            [disabled]="cita.estado !== 'RESERVADO'"
                             label="Reprogramar" 
                             severity="info"
                             (click)="reprogramarCita(cita)"
                         ></p-button>
                         <p-button 
-                            [disabled]="cita.estado === 'CANCELADO'"
+                            [disabled]="cita.estado !== 'RESERVADO'"
                             label="Cancelar" 
                             severity="danger"
                             (click)="cancelarCita(cita)"
