@@ -10,7 +10,10 @@ import { addDays } from "date-fns";
   styleUrl: './mis-citas.component.css'
 })
 export class MisCitasComponent implements OnInit {
+
+    visible: boolean = false;
     citas: Cita[] = [];
+    selectedCita!: Cita;
 
     constructor(
       private readonly citasService: CitaService,
@@ -73,5 +76,15 @@ export class MisCitasComponent implements OnInit {
       const index = this.citas.findIndex(c => c.codigo === cita.codigo);
 
       this.citas[index] = cita;
+    }
+
+    openCitaDialog(codigo: number){
+      this.citasService.getCitaById(codigo).subscribe({
+        next: (response) => {
+          this.selectedCita = response;
+          this.visible = true;
+        },
+        error: (error) => console.error('Error al registrar el paciente', error)
+      });
     }
 }

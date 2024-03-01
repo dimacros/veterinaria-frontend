@@ -43,9 +43,56 @@
                             severity="danger"
                             (click)="cancelarCita(cita)"
                         ></p-button>
+                        <p-button label="Ver Detalle" severity="success"
+                            (onClick)="openCitaDialog(cita.codigo)"></p-button>
                     </td>
                 </tr>
             </ng-template>
         </p-table>
     </p-card>
 </div>
+
+<p-dialog header="Ver Detalle de Cita" [(visible)]="visible" [modal]="true" [style]="{ width: '50vw' }" [draggable]="false"
+    [resizable]="false">
+    <div class="grid" *ngIf="selectedCita">
+        <div class="col-6">
+            <div class="field">
+                <label for="especialidad">Especialidad</label>
+                <br>
+                <input type="text" pInputText [readOnly]="true" [value]="selectedCita.psicologo.especialidad.nombre"/>
+            </div>
+            <div class="field">
+                <label for="psychologist">Psicólogo:</label>
+                <br>
+                <input type="text" pInputText [readOnly]="true" [value]="selectedCita.psicologo.nombres + ' '+selectedCita.psicologo.apellidos"/>
+            </div>
+            <div class="field">
+                <label for="psychologist">Paciente</label>
+                <br>
+                <input type="text" pInputText [readOnly]="true" [value]="selectedCita.paciente.nombres + ' '+selectedCita.paciente.apellidos"/>
+            </div>
+            <div class="field">
+                <label for="reservationDate">Fecha de Reserva</label>
+                <br>
+                <input type="text" pInputText [readOnly]="true" value="{{selectedCita.fecha | date:'shortDate'}}"/>
+            </div>
+            <div class="field">
+                <label for="reservationTime">Hora de Reserva</label>
+                <br>
+                <input type="text" pInputText [readOnly]="true" [value]="selectedCita.hora"/>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="field">
+                <label for="especialidad">Estado Cita</label>
+                <br>
+                <input type="text" pInputText [readOnly]="true" [value]="selectedCita.estado"/>
+            </div>
+            <div class="field">
+                <label for="psychologist">Apuntes</label>
+                <br>
+                <textarea rows="11" cols="30" pInputTextarea [value]="selectedCita.apuntes" [readOnly]="true"></textarea>
+            </div>
+        </div>
+    </div>
+</p-dialog>
