@@ -17,7 +17,7 @@ export class CitaService {
   }
 
   listCita(){
-    return this.http.get(this.apiUrl);
+    return this.http.get<Cita[]>(this.apiUrl);
   }
 
   updateCita(cita: Cita | any){

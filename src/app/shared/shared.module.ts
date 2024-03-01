@@ -19,7 +19,7 @@ import { CardModule } from 'primeng/card';
 import { ChipModule } from 'primeng/chip';
 import { TableModule } from 'primeng/table';
 import { SkeletonModule } from 'primeng/skeleton';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { StepsModule } from 'primeng/steps';
 
@@ -33,6 +33,9 @@ import { StepsModule } from 'primeng/steps';
     MenubarModule
   ],
   exports: [
+    // Angular
+    FormsModule,
+    // Primge NG
     ButtonModule, 
     AutoCompleteModule,
     CalendarModule,
@@ -52,7 +55,6 @@ import { StepsModule } from 'primeng/steps';
     SkeletonModule,
     NavBarComponent,
     CardModule,
-    DropdownModule,
     TableModule,
     ReactiveFormsModule,
     StepsModule,

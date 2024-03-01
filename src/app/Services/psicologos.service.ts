@@ -12,11 +12,11 @@ export class PsicologosService {
   constructor(private http: HttpClient) { } // Inyectar HttpClient
 
   // Método para añadir un nuevo psicólogo
-  addPsicologo(psicologo: Psicologo | any) {
+  addPsicologo(psicologo: Psicologo) {
     return this.http.post(this.apiUrl, psicologo);
   }
 
   listPsicologos(){
-    return this.http.get(this.apiUrl);
+    return this.http.get<Psicologo[]>(this.apiUrl);
   }
 }

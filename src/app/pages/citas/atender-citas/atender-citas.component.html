@@ -1,7 +1,29 @@
 <div class="card">
     <p-card header="Atender Citas">
-        <p class="m-0">
+        <p>
             En esta vista genera un listado con las citas registradas y que de opción a atender, para que se actualicen de acuerdo a la logica planteada
         </p>
+        <p-table [value]="citas" [tableStyle]="{ 'min-width': '50rem' }">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>Nombre del Paciente</th>
+                    <th>Tópico</th>
+                    <th>Día y Hora</th>
+                    <th>Estado</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-cita>
+                <tr>
+                    <td>
+                        {{ cita.paciente.nombres }} {{ cita.paciente.apellidos }}
+                    </td>
+                    <td>
+                        {{ cita.psicologo.especialidad.nombre }}
+                    </td>
+                    <td>{{ cita.horaCita | date:'short' }}</td>
+                    <td>{{ cita.estado }}</td>
+                </tr>
+            </ng-template>
+        </p-table>
     </p-card>
 </div>

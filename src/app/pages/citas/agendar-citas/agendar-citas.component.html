@@ -1,7 +1,64 @@
 <div class="card">
     <p-card header="Agendar Citas">
-        <p class="m-0">
-            En esta vista genera un formulario donde se seleccione paciente, distrito, especialidad, doctor, fecha y entre otros datos de las citas
-        </p>
+      <div class="grid">
+        <div class="col-6">
+          <div>
+            <div class="field">
+              <label for="especialidad">Especialidad</label>
+              <p-dropdown
+                styleClass="w-full"
+                [options]="especialidadOptions"
+                [(ngModel)]="selectedEspecialidad"
+                (onChange)="getPsychologistsByEspecialidad($event.value)"
+                optionLabel="name"
+                placeholder="Seleccione una especialidad"
+                name="especialidad"
+              ></p-dropdown>
+            </div>
+            <div class="field">
+              <label for="psychologist">Psicólogo</label>
+              <p-dropdown
+                styleClass="w-full"
+                [options]="psychologistOptions"
+                [(ngModel)]="selectedPsychologist"
+                optionLabel="name"
+                placeholder="Seleccione psicólogo"
+                name="psychologist"
+              ></p-dropdown>
+            </div>
+            <div class="field">
+              <label for="reservationDate">Fecha de Reserva</label>
+              <p-calendar
+                styleClass="w-full"
+                [(ngModel)]="reservationDate"
+                [showIcon]="true"
+                placeholder="Seleccione una fecha"
+                name="reservationDate"
+              ></p-calendar>
+            </div>
+            <div class="field">
+              <label for="reservationTime">Hora de Reserva</label>
+              <input
+                class="w-full"
+                pInputText
+                type="time"
+                [(ngModel)]="reservationTime"
+                placeholder="Seleccione la hora"
+                name="reservationTime"
+              />
+            </div>
+            <!-- Send Button -->
+            <button class="p-button p-button-primary" (click)="reservarCita()">Reservar</button>
+          </div>
+        </div>
+      </div>    
+        <!-- Display Selected Values (for testing) -->
+        <div *ngIf="selectedEspecialidad || selectedPsychologist || reservationDate || reservationTime">
+          <h4>Selected Values:</h4>
+          <p>Especialidad: {{ selectedEspecialidad?.name }}</p>
+          <p>Psychologist: {{ selectedPsychologist?.name }}</p>
+          <p>Reservation Date: {{ reservationDate | date }}</p>
+          <p>Reservation Time: {{ reservationTime }}</p>
+        </div>
     </p-card>
 </div>
