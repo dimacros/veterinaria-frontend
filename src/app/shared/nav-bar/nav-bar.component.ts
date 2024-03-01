@@ -11,10 +11,26 @@ export class NavBarComponent {
   ngOnInit() {
         this.items = [
           {
-            label: 'Agendar Cita',
-            icon: 'pi pi-fw pi-calendar',
-            routerLink: '/agendar-cita'
+            label: 'Inicio',
+            icon: 'pi pi-fw pi-home',
+            routerLink: '/'
           },
+          {
+            label: 'Citas',
+            icon: 'pi pi-fw pi-calendar-plus',
+            items: [
+              {
+                label: 'Agendar Cita',
+                icon: 'pi pi-fw pi-calendar',
+                routerLink: '/agendar-cita'
+              },{
+                label: 'Listado de Citas',
+                icon: 'pi pi-fw pi-list',
+                routerLink: '/paciente/mis-citas'
+              },
+            ]
+          },
+          
           {
             label: 'Usuarios',
             icon: 'pi pi-fw pi-user',
