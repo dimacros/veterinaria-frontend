@@ -22,7 +22,12 @@ import { SkeletonModule } from 'primeng/skeleton';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { StepsModule } from 'primeng/steps';
-
+import { DividerModule } from 'primeng/divider';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ConfirmPopupModule } from 'primeng/confirmpopup';
+import { DialogModule } from 'primeng/dialog';
+import { MessagesModule } from 'primeng/messages';
+import { ToastModule } from 'primeng/toast';
 
 @NgModule({
   declarations: [
@@ -40,6 +45,10 @@ import { StepsModule } from 'primeng/steps';
     AutoCompleteModule,
     CalendarModule,
     CheckboxModule,
+    ConfirmPopupModule,
+    ConfirmDialogModule,
+    DialogModule,
+    DividerModule,
     DropdownModule,
     EditorModule,
     InputGroupModule,
@@ -58,6 +67,8 @@ import { StepsModule } from 'primeng/steps';
     TableModule,
     ReactiveFormsModule,
     StepsModule,
+    MessagesModule,
+    ToastModule,
   ]
 })
 export class SharedModule { }

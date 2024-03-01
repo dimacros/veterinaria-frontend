@@ -1,0 +1,46 @@
+<div class="card">
+  <p-card header="Iniciar Sesión" styleClass="mx-auto w-full lg:w-6" >
+    <div>
+      <div class="field">
+        <label for="tipoRol">Tipo Rol</label>
+        <p-dropdown
+          styleClass="w-full"
+          [options]="roleTypeOptions"
+          [(ngModel)]="selectedTipoRol"
+          placeholder="Seleccione su Rol"
+        ></p-dropdown>
+      </div>
+      <div class="field" *ngIf="pacienteWasSelected()">
+        <label for="paciente">Seleccione una cuenta de Paciente</label>
+        <p-dropdown
+          styleClass="w-full"
+          [options]="pacienteOptions"
+          [(ngModel)]="selectedPaciente"
+          placeholder="Seleccione un Paciente"
+        ></p-dropdown>
+      </div>
+      <div class="field" *ngIf="psicologoWasSelected()">
+        <label for="medico">Seleccione una cuenta de Psicólogo </label>
+        <p-dropdown
+          styleClass="w-full"
+          [options]="psicologoOptions"
+          [(ngModel)]="selectedPsicologo"
+          placeholder="Seleccione un Médico"
+        ></p-dropdown>
+      </div>
+     <div class="flex gap-3">
+        <p-button 
+          label="Ingresar"
+          [disabled]="!selectedTipoRol"
+          (click)="login()"
+        ></p-button>
+        <p-button 
+          label="Registrarse"
+          severity="secondary"
+          [disabled]="!selectedTipoRol"
+          (click)="goToRegister()"
+        ></p-button>
+     </div>
+    </div>
+  </p-card>
+</div>

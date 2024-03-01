@@ -3,6 +3,8 @@ import { EspecialidadService } from '../../../Services/especialidad.service';
 import { PsicologosService } from '../../../Services/psicologos.service';
 import { CitaService } from '../../../Services/cita.service';
 import { Psicologo } from '../../../Models/Psicologo.model';
+import { format } from 'date-fns';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-agendar-citas',
@@ -24,6 +26,7 @@ export class AgendarCitasComponent implements OnInit {
     private readonly citaService: CitaService,
     private readonly especialidadService: EspecialidadService,
     private readonly psicolologosService: PsicologosService,
+    private readonly router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -60,13 +63,13 @@ export class AgendarCitasComponent implements OnInit {
       psicologo: {
         codigo: this.selectedPsychologist.value,
       },
-      fecha: this.reservationDate,
+      fecha: format(this.reservationDate, 'yyyy-MM-dd'),
       hora: this.reservationTime,
       estado: 'RESERVADO',
       apuntes: '',
     }).subscribe({
       next: () => {
-        alert('Cita reservada correctamente');
+        this.router.navigate(['/paciente/mis-citas']);
       },
       error: () => {
         alert('Error al reservar cita');

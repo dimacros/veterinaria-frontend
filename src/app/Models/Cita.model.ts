@@ -7,6 +7,20 @@ export interface Cita {
     psicologo: Psicologo;
     fecha: string;
     hora: string;
+    reservationDate: Date;
+    estado: string;
+    apuntes: string;
+}
+
+export interface AddCita {
+    paciente: {
+        codigo: number;
+    },
+    psicologo: {
+        codigo: number;
+    },
+    fecha: string|Date;
+    hora: string;
     estado: string;
     apuntes: string;
 }

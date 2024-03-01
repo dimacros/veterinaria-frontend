@@ -21,7 +21,7 @@ export class AtenderCitasComponent implements OnInit {
 
           horaCita.setHours(Number(hours));
           horaCita.setMinutes(Number(minutes));
-          console.log(horaCita);
+
           return {
             ...cita,
             horaCita,

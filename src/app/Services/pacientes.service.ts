@@ -12,11 +12,11 @@ export class PacientesService {
   constructor(private http: HttpClient) { } // Inyectar HttpClient
 
   // Método para añadir un nuevo paciente
-  addPaciente(paciente: Paciente | any) {
-    return this.http.post(this.apiUrl, paciente);
+  addPaciente(paciente: Omit<Paciente, 'codigo'>) {
+    return this.http.post<Paciente>(this.apiUrl, paciente);
   }
   
   listPacientes(){
-    return this.http.get(this.apiUrl);
+    return this.http.get<Paciente[]>(this.apiUrl);
   }
 }
