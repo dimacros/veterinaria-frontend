@@ -21,7 +21,8 @@ export class AgendarCitasComponent implements OnInit {
   selectedPsychologist: any;
   reservationDate: Date = new Date();
   reservationTime: string = '';
-
+  codPaciente!:number;
+  
   constructor(
     private readonly citaService: CitaService,
     private readonly especialidadService: EspecialidadService,
@@ -44,6 +45,8 @@ export class AgendarCitasComponent implements OnInit {
         value: psicologo.codigo,
       }));
     });
+
+    this.codPaciente = parseInt(localStorage.getItem('codPaciente') || '1') ;
   }
 
   getPsychologistsByEspecialidad(option: { name: string, value: number }) {
@@ -58,7 +61,7 @@ export class AgendarCitasComponent implements OnInit {
   reservarCita() {
     this.citaService.addCita({
       paciente: {
-        codigo: 1,
+        codigo: this.codPaciente,
       },
       psicologo: {
         codigo: this.selectedPsychologist.value,

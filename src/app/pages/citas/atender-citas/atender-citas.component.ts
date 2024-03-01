@@ -13,6 +13,7 @@ export class AtenderCitasComponent implements OnInit {
   visible: boolean = false;
   selectedCita!: Cita;
   isEditDialog: boolean = false;
+  codPsicologo!: number;
 
   constructor(
     private readonly citasService: CitaService,
@@ -21,6 +22,7 @@ export class AtenderCitasComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.codPsicologo = parseInt(localStorage.getItem('codPsicologo') || '0') ;
     this.cargarCitas();
   }
 
@@ -37,6 +39,11 @@ export class AtenderCitasComponent implements OnInit {
 
   cargarCitas() {
     this.citasService.listCita().subscribe((citas) => {
+
+      if(this.codPsicologo != 0){
+        citas = citas.filter( c => c.psicologo.codigo === this.codPsicologo);
+      }
+
       this.citas = citas.map(cita => {
         const [hours, minutes] = cita.hora.split(':');
         const horaCita = new Date(cita.fecha);

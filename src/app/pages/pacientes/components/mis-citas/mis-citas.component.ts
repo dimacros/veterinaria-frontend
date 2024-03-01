@@ -14,6 +14,7 @@ export class MisCitasComponent implements OnInit {
     visible: boolean = false;
     citas: Cita[] = [];
     selectedCita!: Cita;
+    codPaciente!:number;
 
     constructor(
       private readonly citasService: CitaService,
@@ -22,8 +23,15 @@ export class MisCitasComponent implements OnInit {
     ) { }
   
     ngOnInit(): void {
+      this.codPaciente = parseInt(localStorage.getItem('codPaciente') || '0') ;
       this.citasService.listCita().subscribe((citas) => {
-        this.citas = citas;
+
+        if(this.codPaciente != 0){
+          this.citas = citas.filter(c => c.paciente.codigo == this.codPaciente);
+        } else {
+          this.citas = citas;
+        }
+        
       });
     }
 

@@ -55,8 +55,11 @@ export class HomeComponent implements OnInit {
 
     login() {
       if (this.psicologoWasSelected()) {
+        debugger;
+        localStorage.setItem('codPsicologo', this.selectedPsicologo.toString());
         this.router.navigate(['/atender-cita']);
       } else if (this.pacienteWasSelected()) {
+        localStorage.setItem('codPaciente', this.selectedPaciente.toString());
         this.router.navigate(['/agendar-cita']);
       }
     }
