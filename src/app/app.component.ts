@@ -21,5 +21,5 @@ import { CitasModule } from './pages/citas/citas.module';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'veterinaria-frontend';
+  title = 'Centro Psicológico Frontend';
 }

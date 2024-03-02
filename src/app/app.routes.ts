@@ -12,5 +12,6 @@ export const routes: Routes = [
     { path: 'paciente', component:  MainPacienteComponent},
     { path: 'paciente/mis-citas', component:  MisCitasComponent },
     { path: 'atender-cita', component:  AtenderCitasComponent},
-    { path: 'agendar-cita', component:  AgendarCitasComponent}
+    { path: 'agendar-cita', component:  AgendarCitasComponent},
+    { path: '**', redirectTo: '', pathMatch: 'full' }
 ];
